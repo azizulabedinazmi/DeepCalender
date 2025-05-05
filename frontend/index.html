@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Calendar</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="light-theme">
+    <div id="auth-container">
+        <!-- Inside auth-container -->
+        <form id="login-form" class="auth-form">
+            <h2>Login</h2>
+            <div id="auth-error" class="error-message hidden"></div>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <button type="button" id="show-register">Create Account</button>
+        </form>
+
+        <form id="register-form" class="auth-form hidden">
+            <h2>Register</h2>
+            <div id="register-error" class="error-message hidden"></div>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <button type="submit">Register</button>
+            <button type="button" id="show-login">Back to Login</button>
+        </form>
+    </div>
+
+    <!-- Updated calendar-container -->
+    <div id="calendar-container" class="hidden">
+        <div class="calendar-header">
+            <button id="prev-month">&lt;</button>
+            <h2 id="month-year"></h2>
+            <div class="header-controls">
+                <button id="next-month">&gt;</button>
+                <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+            </div>
+        </div>
+        <div class="calendar-grid" id="calendar-grid">
+            <!-- Days will be inserted here by JavaScript -->
+        </div>
+    </div>
+    
+    <!-- Add Task List Panel -->
+    <div id="task-panel" class="hidden">
+        <div class="panel-header">
+            <h3>Tasks for <span id="selected-date"></span></h3>
+            <button id="new-task-btn">＋ New Task</button>
+        </div>
+        <div id="tasks-container"></div>
+    </div>
+
+    <!-- Add Modal HTML -->
+    <div id="event-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">New Event</h2>
+            <form id="event-form">
+                <input type="hidden" id="event-id">
+                
+                <div class="form-group">
+                    <label for="event-title">Title</label>
+                    <input type="text" id="event-title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-time">Date & Time</label>
+                    <input type="datetime-local" id="event-time" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-location">Location</label>
+                    <input type="text" id="event-location">
+                </div>
+
+                <div class="form-group">
+                    <label for="event-description">Description</label>
+                    <textarea id="event-description" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-tags">Tag People (@username)</label>
+                    <input type="text" id="event-tags" placeholder="e.g. @john @sarah">
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" id="delete-event" class="danger hidden">Delete</button>
+                    <button type="submit">Save Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
